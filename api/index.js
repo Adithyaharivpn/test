@@ -7,7 +7,7 @@ var app= express();
 app.use(cors());
 
 app.use(express.json())
-var port=3000;
+const port = process.env.PORT || 3000;
 
 app.use('/api',userRoute)
 app.use('/product',productRoute)

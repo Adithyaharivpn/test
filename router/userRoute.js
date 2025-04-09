@@ -2,7 +2,7 @@ var express = require("express")
 var router = express.Router();
 var userModel = require("../model/user")
 
-router.post('/',(req,res)=>{
+router.post('/user',(req,res)=>{
     try {
         userModel(req.body).save()
         res.send("Data added")

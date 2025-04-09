@@ -13,7 +13,9 @@ app.use('/api',userRoute)
 app.use('/product',productRoute)
 
 
-
-app.listen(port,()=>{
-    console.log(`server up and running on port ${port}`)
-})
+module.exports = (req, res) => {
+    app(req, res);  // Handle the request using Express
+  };
+// app.listen(port,()=>{
+//     console.log(`server up and running on port ${port}`)
+// })

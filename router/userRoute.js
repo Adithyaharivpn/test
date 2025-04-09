@@ -2,28 +2,29 @@ var express = require("express")
 var router = express.Router();
 var userModel = require("../model/user")
 
-router.post('/user',(req,res)=>{
+router.get('/user',async(req,res)=>{
     try {
-        userModel(req.body).save()
-        res.send("Data added")
+        var data = await userModel.find()
+        res.send(data)
     } catch (error) {
-        console.log(error)
+        res.send(error)
     }
 })
+
 router.post('/login',async(req,res)=>{
-        const user = await userModel.findOne({ email: req.body.email });
-        if (!user) {
-          return res.send("error")
-        }  
-        try {
-            if (user.password === req.body.password) {
-                res.send("login successful")
-            } else {
-                res.send("invalid crendentials")
-            }
-        } catch (error) {
-            res.send(error)
+    const user = await userModel.findOne({ email: req.body.email });
+    if (!user) {
+      return res.send("error")
+    }  
+    try {
+        if (user.password === req.body.password) {
+            res.send("login successful")
+        } else {
+            res.send("invalid crendentials")
         }
+    } catch (error) {
+        res.send(error)
+    }
 })
 
 module.exports = router

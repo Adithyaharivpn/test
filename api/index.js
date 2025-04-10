@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 app.use('/api',userRoute)
 app.use('/product',productRoute)
 
-
+//test
 //module.exports = (req, res) => {
  //   app(req, res);  // Handle the request using Express
 //  };
